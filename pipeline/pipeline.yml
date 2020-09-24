@@ -1,0 +1,16 @@
+resources:
+- name: master_branch
+  type: git
+  source: 
+    uri: https://github.com/SeUnv/concourse_pipeline/tree/staging
+    branch: staging
+    private_key: 
+  check_every: 1m
+
+jobs:
+
+- name: execute_task
+  plan:
+  - get: master_branch
+    trigger: true
+  task:	
